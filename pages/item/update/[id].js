@@ -9,7 +9,7 @@ const UpdateItem = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch(`https://nextjs-diary-app.vercel.app/api/item/update/${props.singleItem._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/update/${props.singleItem._id}`, {
         method: "POST",
         headers: {
           "Accept": "application/json",
@@ -50,7 +50,7 @@ const UpdateItem = (props) => {
 export default UpdateItem
 
 export const getServerSideProps = async (context) => {
-  const response = await fetch(`https://nextjs-diary-app.vercel.app/api/item/${context.query.id}`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/${context.query.id}`)
   const singleItem = await response.json()
 
   return {

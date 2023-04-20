@@ -21,7 +21,7 @@ const ReadSingleItem = (props) => {
 export default ReadSingleItem
 
 export const getServerSideProps = async (context) => {
-  const response = await fetch(`https://nextjs-diary-app.vercel.app/api/item/${context.query.id}`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/${context.query.id}`)
   const singleItem = await response.json()
 
   return {

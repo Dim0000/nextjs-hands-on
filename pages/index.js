@@ -21,7 +21,7 @@ const ReadAllItems = (props) => {
 export default ReadAllItems
 
 export const getServerSideProps = async () => {
-  const response = await fetch("https://nextjs-diary-app.vercel.app/api/item/readall")
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/readall`)
   const allItems = await response.json()
   return {
     props: allItems

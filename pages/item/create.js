@@ -10,7 +10,7 @@ const CreateItem = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch("https://nextjs-diary-app.vercel.app/api/item/create", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/create`, {
         method: "POST",
         headers: {
           "Accept": "application/json",
