@@ -18,7 +18,8 @@ const UpdateItem = (props) => {
         },
         body: JSON.stringify({
           title: title,
-          description: description
+          description: description,
+          updateDate: new Date().toLocaleString(),
         })
       })
       const jsonData = await response.json()

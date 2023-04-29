@@ -3,25 +3,28 @@ import mongoose from "mongoose"
 const Schema = mongoose.Schema
 
 const ItemSchema = new Schema({
-    title: String,
-    description: String,
-    email: String,
+  title: String,
+  description: String,
+  name: String,
+  email: String,
+  createDate: String,
+  updateDate: String,
 })
 
 const UserSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true,
-    }
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true,
+  }
 })
 
 export const ItemModel = mongoose.models.Item || mongoose.model("Item", ItemSchema);

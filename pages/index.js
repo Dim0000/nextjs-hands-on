@@ -10,6 +10,9 @@ const ReadAllItems = (props) => {
           <Link href={`/item/${item._id}`} key={item._id}>
             <div className="texts-area">
               <h2>{item.title}</h2>
+              <hr />
+              <p>作成者:{item.name}<br></br>作成日:{item.createDate}<br></br>更新日:{item.updateDate}</p>
+              <hr />
               <p>{item.description.substring(0, 80)}</p>
             </div>
           </Link>

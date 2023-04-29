@@ -11,6 +11,7 @@ const loginUser = async (req, res) => {
     if (savadUserData) {
       if (req.body.password == savadUserData.password) {
         const payload = {
+          name: savadUserData.name,
           email: req.body.email,
         }
         const token = jwt.sign(payload, secret_key, { expiresIn: "23h" })

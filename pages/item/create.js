@@ -19,7 +19,8 @@ const CreateItem = () => {
         },
         body: JSON.stringify({
           title: title,
-          description: description
+          description: description,
+          createDate: new Date().toLocaleString(),
         })
       })
       const jsonData = await response.json()

@@ -8,6 +8,8 @@ const ReadSingleItem = (props) => {
       <div>
         <h1>{props.singleItem.title}</h1>
         <hr />
+        <p>作成者:{props.singleItem.name}<br></br>作成日:{props.singleItem.createDate}<br></br>更新日:{props.singleItem.updateDate}</p>
+        <hr />
         <p>{props.singleItem.description}</p>
         <div>
           <Link href={`/item/update/${props.singleItem._id}`}>編集</Link>

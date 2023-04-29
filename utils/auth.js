@@ -13,6 +13,7 @@ const auth = (handler) => {
     }
     try {
       const decoded = jwt.verify(token, secret_key)
+      req.body.name = decoded.name
       req.body.email = decoded.email
       return handler(req, res)
     } catch (err) {
