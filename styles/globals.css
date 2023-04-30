@@ -130,6 +130,7 @@ p {
   font-size: 1.8rem;
   line-height: 3.5rem;
   margin-bottom: 1.4rem;
+  white-space: pre-wrap;
 }
 
 a {
