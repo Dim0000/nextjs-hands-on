@@ -1,0 +1,24 @@
+version: '3'
+
+volumes:
+  node-modules:
+  .next:
+  
+services:
+  app:
+    build:
+      context: .
+    working_dir: /app
+    tty: true
+    volumes:
+      - .:/app
+      - node-modules:/app/node_modules
+      - .next:/app/.next
+    environment:
+      - WATCHPACK_POLLING=true
+    command: bash -c "npm install &&
+      npm install mongoose &&
+      npm install jsonwebtoken &&
+      npm run dev"
+    ports:
+      - "3000:3000"
