@@ -15,3 +15,9 @@
 
 * Deployment:
   * Vercel
+
+* Docker
+
+## Docker Command
+
+* `docker compose up -d`
