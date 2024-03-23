@@ -2,7 +2,7 @@ import type { NextApiResponse } from "next"
 import connectDB from "../../../utils/database"
 import { ItemModel } from "../../../utils/schemaModels"
 import auth from "../../../utils/auth"
-import { ExtendNextApiRequestItem, ResReadAllType } from "./types"
+import { ExtendNextApiRequestItem, ResReadAllType } from "../../../utils/types"
 
 const createItem = async (req: ExtendNextApiRequestItem, res: NextApiResponse<ResReadAllType>) => {
   try {

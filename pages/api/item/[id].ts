@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import connectDB from "../../../utils/database"
 import { ItemModel } from "../../../utils/schemaModels"
-import { SavedItemDataType, ResReadSingleType } from "./types"
+import { SavedItemDataType, ResReadSingleType } from "../../../utils/types"
 
 const getSingleItem = async (req: NextApiRequest, res: NextApiResponse<ResReadSingleType>) => {
     try {

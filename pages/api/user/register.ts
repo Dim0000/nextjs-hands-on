@@ -1,7 +1,7 @@
 import type { NextApiResponse } from "next"
 import connectDB from "../../../utils/database"
 import { UserModel } from "../../../utils/schemaModels"
-import { ExtendNextApiRequestUser, ResMessageType } from "./types"
+import { ExtendNextApiRequestUser, ResMessageType } from "../../../utils/types"
 
 
 const registerUser = async (req: ExtendNextApiRequestUser, res: NextApiResponse<ResMessageType>) => {
