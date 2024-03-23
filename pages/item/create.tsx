@@ -1,13 +1,13 @@
-import { headers } from "next/dist/client/components/headers"
+import type { NextPage } from "next"
 import { useState } from "react"
 import useAuth from "../../utils/useAuth"
 import Head from "next/head"
 
-const CreateItem = () => {
+const CreateItem: NextPage = () => {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/create`, {
@@ -44,6 +44,8 @@ const CreateItem = () => {
         </form>
       </div>
     )
+  } else {
+    return <h1>ログインしてください</h1>
   }
 }
 

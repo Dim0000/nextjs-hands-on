@@ -1,7 +1,9 @@
+import type { NextPage, GetServerSideProps } from "next"
 import Link from "next/link"
 import Head from "next/head"
+import { ReadSingleDataType } from "../../utils/types"
 
-const ReadSingleItem = (props) => {
+const ReadSingleItem: NextPage<ReadSingleDataType> = (props) => {
   return (
     <div className="grid-container-si">
       <Head><title>{props.singleItem.title}</title></Head>
@@ -22,7 +24,7 @@ const ReadSingleItem = (props) => {
 
 export default ReadSingleItem
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<ReadSingleDataType> = async (context) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/${context.query.id}`)
   const singleItem = await response.json()
 

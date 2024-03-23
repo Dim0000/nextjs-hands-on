@@ -1,9 +1,10 @@
+import type { NextPage, GetServerSideProps } from "next"
 import useAuth from "../../../utils/useAuth"
 import Head from "next/head"
+import { ReadSingleDataType } from "../../../utils/types"
 
-const DeleteItem = (props) => {
-
-  const handleSubmit = async (e) => {
+const DeleteItem: NextPage<ReadSingleDataType> = (props) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/delete/${props.singleItem._id}`, {
@@ -43,7 +44,7 @@ const DeleteItem = (props) => {
 
 export default DeleteItem
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<ReadSingleDataType> = async (context) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/${context.query.id}`)
   const singleItem = await response.json()
 

@@ -1,43 +1,43 @@
+import type { NextPage } from "next"
 import { useState } from "react"
 import Head from "next/head"
 
-const Register = () => {
-  const [name, setName] = useState("")
+const Login: NextPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/user/register`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/user/login`, {
         method: "POST",
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          name: name,
           email: email,
           password: password
         })
       })
       const jsonData = await response.json()
+      localStorage.setItem("token", jsonData.token)
       alert(jsonData.message)
     } catch (err) {
-      alert("ユーザ登録失敗")
+      alert("ログイン失敗")
     }
   }
   return (
     <div>
-      <Head><title>ユーザ登録</title></Head>
-      <h1 className="page-title">ユーザ登録</h1>
+      <Head><title>ログイン</title></Head>
+      <h1 className="page-title">ログイン</h1>
       <form onSubmit={handleSubmit}>
-        <input value={name} onChange={(e) => setName(e.target.value)} type="text" name="name" placeholder="名前" required />
         <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" placeholder="メールアドレス" required />
-        <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" name="password" placeholder="パスワード" required />
-        <button>登録</button>
+        <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="パスワード" required />
+        <button>ログイン</button>
       </form>
     </div>
   )
 }
-export default Register
+
+export default Login

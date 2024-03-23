@@ -1,7 +1,9 @@
+import type { NextPage, GetServerSideProps } from "next"
 import Link from "next/link"
 import Head from "next/head"
+import { ReadAllDataType } from "../utils/types"
 
-const ReadAllItems = (props) => {
+const ReadAllItems: NextPage<ReadAllDataType> = (props) => {
   return (
     <div>
       <Head><title>Next-diary</title></Head>
@@ -23,7 +25,7 @@ const ReadAllItems = (props) => {
 }
 export default ReadAllItems
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<ReadAllDataType> = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/api/item/readall`)
   const allItems = await response.json()
   return {
