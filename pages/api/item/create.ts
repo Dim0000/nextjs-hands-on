@@ -1,8 +1,10 @@
+import type { NextApiResponse } from "next"
 import connectDB from "../../../utils/database"
 import { ItemModel } from "../../../utils/schemaModels"
 import auth from "../../../utils/auth"
+import { ExtendNextApiRequestItem, ResReadAllType } from "./types"
 
-const createItem = async (req, res) => {
+const createItem = async (req: ExtendNextApiRequestItem, res: NextApiResponse<ResReadAllType>) => {
   try {
     await connectDB()
     connectDB()

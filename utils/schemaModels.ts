@@ -1,8 +1,9 @@
 import mongoose from "mongoose"
+import { ItemDataType, UserDataType } from "./types"
 
 const Schema = mongoose.Schema
 
-const ItemSchema = new Schema({
+const ItemSchema = new Schema<ItemDataType>({
   title: String,
   description: String,
   name: String,
@@ -11,7 +12,7 @@ const ItemSchema = new Schema({
   updateDate: String,
 })
 
-const UserSchema = new Schema({
+const UserSchema = new Schema<UserDataType>({
   name: {
     type: String,
     required: true,

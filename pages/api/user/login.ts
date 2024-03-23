@@ -1,13 +1,15 @@
+import type { NextApiResponse } from "next"
 import jwt from "jsonwebtoken"
 import connectDB from "../../../utils/database"
 import { UserModel } from "../../../utils/schemaModels"
+import { ExtendNextApiRequestUser, SavedUserDataType, ResMessageType } from "./types"
 
 const secret_key = "nextdiary"
 
-const loginUser = async (req, res) => {
+const loginUser = async (req: ExtendNextApiRequestUser, res: NextApiResponse<ResMessageType>) => {
   try {
     await connectDB()
-    const savadUserData = await UserModel.findOne({ email: req.body.email })
+    const savadUserData: SavedUserDataType | null = await UserModel.findOne({ email: req.body.email })
     if (savadUserData) {
       if (req.body.password == savadUserData.password) {
         const payload = {
