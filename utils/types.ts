@@ -44,11 +44,11 @@ export interface SavedUserDataType extends UserDataType {
   _id: Types.ObjectId
 }
 
-export interface SavedItemDataType extends UserDataType {
+export interface SavedItemDataType extends ItemDataType {
   _id: Types.ObjectId
 }
 
-export interface ResReadAllType extends UserDataType {
+export interface ResReadAllType {
   message: string
   allItems?: SavedItemDataType[]
 }
